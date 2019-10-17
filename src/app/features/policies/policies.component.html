@@ -1,0 +1,36 @@
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title"> Policy List</h3>
+  </div>
+  <div class="panel-body">
+    <div class="table-responsive">
+      <table class="table table-bordered" *ngIf="policies && policies.length">
+        <thead>
+          <tr class="bg-primary">
+            <th>Id</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Gender</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let policy of policies">
+            <td>{{ policy.id }}</td>
+            <td>{{ policy.policyHolder.name }}</td>
+            <td>{{ policy.policyHolder.age }}</td>
+            <td>{{ policy.policyHolder.gender |policyGender:policy.policyHolder.gender}}</td>
+            <td>
+
+              <button class="btn btn-primary" (click)="editButtonClick(policy.id)">Edit</button>
+              <button type="button" class="btn btn-danger btn-sm pull-right" title="Remove"
+                (click)="removePolictk(policy.id)">
+                <span class="glyphicon glyphicon-remove"></span>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
